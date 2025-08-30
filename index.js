@@ -1,3 +1,15 @@
+//adjust the header section to fixed
+function adjustHeader() {
+    const header = document.getElementById('top-header')
+    const space = document.getElementById('header-space')
+    const heightSpace = header.offsetHeight;
+    space.style.height = heightSpace + 'px'
+}
+window.addEventListener('load', adjustHeader);
+window.addEventListener('resize', adjustHeader);
+
+
+
 //function for increasing the love by clicking love
 const loveAdd = document.getElementsByClassName('love');
 let count = 0;
@@ -38,7 +50,7 @@ for (const callFuction of callsFunction) {
 
 // copy button function
 const calsFunction = document.getElementsByClassName("card");
-let addCount=0;
+let addCount = 0;
 for (const calFuction of calsFunction) {
     const button = calFuction.querySelector(".copy-copy");
     button.addEventListener("click", function (e) {
@@ -46,11 +58,11 @@ for (const calFuction of calsFunction) {
 
         let copy = document.getElementById("copy");
         let copyConver = parseInt(copy.innerText);
-            const number = calFuction.querySelector(".number").innerText;
-            navigator.clipboard.writeText(number);
-            alert("coppied : " + number);
-            addCount++;
-            copy.innerText = addCount;
-        
+        const number = calFuction.querySelector(".number").innerText;
+        navigator.clipboard.writeText(number);
+        alert("coppied : " + number);
+        addCount++;
+        copy.innerText = addCount;
+
     })
 }
