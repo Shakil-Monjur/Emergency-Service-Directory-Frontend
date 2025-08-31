@@ -1,3 +1,4 @@
+
 //adjust the header section to fixed
 function adjustHeader() {
     const header = document.getElementById('top-header')
@@ -23,6 +24,29 @@ for (const love of loveAdd) {
     )
 }
 
+//function for adding history
+function history(btn, title, number) {
+    const history = document.getElementById('history');
+    const time = new Date().toLocaleTimeString();
+
+    const div = document.createElement("div");
+    div.innerHTML = `<div
+                            class="w-full h-50px bg-[#F5FFF6] mt-[10px] rounded-[10px] flex justify-between items-center px-[10px] py-[20px]">
+                            <div>
+                                <p class="font-bold text-[1.1rem]">${title}</p>
+                                <p>${number}</p>
+                            </div>
+                            <p>${time}</p>
+                        </div>`
+    history.appendChild(div);
+}
+
+//function to clear history
+document.getElementById('clear-history').addEventListener('click',function(e){
+e.preventDefault();
+document.getElementById('history').innerHTML="";
+})
+
 //fuction to set the call section
 const callsFunction = document.getElementsByClassName("card");
 
@@ -40,6 +64,9 @@ for (const callFuction of callsFunction) {
             alert(title + " " + number + "...");
             paisaConver = paisaConver - 20;
             paisa.innerText = paisaConver;
+            history("Called", title, number);
+
+
         }
         else {
             alert("You haven't enough coin to call. you need 20 coin to call")
